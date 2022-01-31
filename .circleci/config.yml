@@ -2,6 +2,8 @@
 # See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
 
+orbs:
+  lambda-python: dialogue/lambda-python@0.19.0
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
@@ -24,3 +26,6 @@ workflows:
   say-hello-workflow:
     jobs:
       - say-hello
+      - lambda-python/package:
+            package_name: test.zip 
+            working_directory: lamda
